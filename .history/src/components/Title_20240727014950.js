@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-const LoggedInUser = () => {
+const AuthenticateUser = () => {
   //API used for authentication
   return true;
 };
-
 const Title = () => (
   <a href="/ ">
     <img

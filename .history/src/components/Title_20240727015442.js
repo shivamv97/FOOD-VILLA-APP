@@ -4,7 +4,6 @@ const LoggedInUser = () => {
   //API used for authentication
   return true;
 };
-
 const Title = () => (
   <a href="/ ">
     <img
@@ -28,11 +27,7 @@ const HeaderComponent = () => {
           <li>Cart</li>
         </ul>
       </div>
-      {isLoggedIn ? (
-        <button onClick={() => setisLoggedIn(false)}>Logout</button>
-      ) : (
-        <button onClick={() => setisLoggedIn(true)}>Login</button>
-      )}
+      {isLoggedIn ? <button>Logout</button> : <button>Login</button>}
     </div>
   );
 };

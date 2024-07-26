@@ -4,7 +4,6 @@ const LoggedInUser = () => {
   //API used for authentication
   return true;
 };
-
 const Title = () => (
   <a href="/ ">
     <img

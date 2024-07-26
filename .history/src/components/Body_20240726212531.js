@@ -5,7 +5,7 @@ import Shimmer from "./shimmer";
 
 function filterdata(searchText, restaurants) {
   return restaurants.filter((restaurant) =>
-    restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
+    restaurant.info.name.includes(searchText)
   );
 }
 
@@ -41,7 +41,6 @@ const Body = () => {
 
   //Don't render component(Early Return)
   // if (!AllRestaurants) return null;
-  if (FilteredRestaurants?.length === 0) return <h1>No Restaurants Found!</h1>;
 
   //Conditional rendering
   return AllRestaurants?.length == 0 ? (
@@ -71,14 +70,15 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-list">
-        {
-          FilteredRestaurants.map((restaurant) => {
-            return (
-              <RestrauntCard key={restaurant.info.id} {...restaurant.info} />
-            );
-          })
-          //H.W. => 1.PROPER PLACE FOR NO RESTAURANTS FOUND   2.SEARCH WENT OFF WHEN IT IS SHOWING NO RESTAURANTS FOUND..........
-        }
+        if (FilteredRestaurants?.length === 0) return{" "}
+        <h1>No Restaurants Found!</h1>;
+        {FilteredRestaurants.map((restaurant) => {
+          return FilteredRestaurants?.length === 0 ? (
+            <h1>No Restaurants Found!</h1>
+          ) : (
+            <RestrauntCard key={restaurant.info.id} {...restaurant.info} />
+          );
+        })}
       </div>
     </>
   );

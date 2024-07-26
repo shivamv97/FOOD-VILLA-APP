@@ -1,18 +1,18 @@
 import { restaurantlist } from "../config";
 import RestrauntCard from "./RestaurantCards";
 import { useState, useEffect } from "react";
-import Shimmer from "./shimmer";
+import shimmer from "./ShimmerUI";
 
 function filterdata(searchText, restaurants) {
   return restaurants.filter((restaurant) =>
-    restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
+    restaurant.info.name.includes(searchText)
   );
 }
 
 const Body = () => {
   // const searchTxt = "KFC"; //for reference...(IN JS)
-  const [AllRestaurants, setAllRestaurants] = useState([]);
-  const [FilteredRestaurants, setFilteredRestaurants] = useState([]); //restaurantlist
+
+  const [restaurants, setRestaurants] = useState([]); //restaurantlist
   const [searchText, setsearchText] = useState(""); //To create state variable.......(IN REACT)
   // console.log("render()");
 
@@ -29,23 +29,15 @@ const Body = () => {
     console.log(json);
     //you have to make change only in line 32,in cards[i],where i is keep changing in the above api link,try from 0-11
     //it's an config-driven UI,Hence,it's Grid Element position keeps on changing.......
-    setAllRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurants(
+    setRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   }
 
   console.log("render");
 
-  //Don't render component(Early Return)
-  // if (!AllRestaurants) return null;
-  if (FilteredRestaurants?.length === 0) return <h1>No Restaurants Found!</h1>;
-
-  //Conditional rendering
-  return AllRestaurants?.length == 0 ? (
-    <Shimmer />
+  return restaurants.length === 9 ? (
+    <shimmer />
   ) : (
     <>
       <div className="search-box">
@@ -62,8 +54,8 @@ const Body = () => {
           className="search-btn"
           onClick={() => {
             //filter the data according to need
-            const data = filterdata(searchText, AllRestaurants);
-            setFilteredRestaurants(data);
+            const data = filterdata(searchText, restaurants);
+            setRestaurants(data);
             //need to update the state-restaurants
           }}
         >
@@ -71,14 +63,11 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-list">
-        {
-          FilteredRestaurants.map((restaurant) => {
-            return (
-              <RestrauntCard key={restaurant.info.id} {...restaurant.info} />
-            );
-          })
-          //H.W. => 1.PROPER PLACE FOR NO RESTAURANTS FOUND   2.SEARCH WENT OFF WHEN IT IS SHOWING NO RESTAURANTS FOUND..........
-        }
+        {restaurants.map((restaurant) => {
+          return (
+            <RestrauntCard key={restaurant.info.id} {...restaurant.info} />
+          );
+        })}
       </div>
     </>
   );

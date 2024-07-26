@@ -18,11 +18,11 @@
 }
 
 .card {
-  width: 255px;
+  width: min-content;
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
-  overflow-wrap: break-word;
+  /* overflow-wrap: break-word; */
 }
 
 .card > img {

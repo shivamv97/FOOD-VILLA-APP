@@ -1,10 +1,5 @@
 import { useState } from "react";
 
-const LoggedInUser = () => {
-  //API used for authentication
-  return true;
-};
-
 const Title = () => (
   <a href="/ ">
     <img
@@ -16,7 +11,7 @@ const Title = () => (
 );
 
 const HeaderComponent = () => {
-  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [isLoggedIn, setisLoggedIn] = useState(true);
   return (
     <div className="header">
       <Title />
@@ -28,11 +23,7 @@ const HeaderComponent = () => {
           <li>Cart</li>
         </ul>
       </div>
-      {isLoggedIn ? (
-        <button onClick={() => setisLoggedIn(false)}>Logout</button>
-      ) : (
-        <button onClick={() => setisLoggedIn(true)}>Login</button>
-      )}
+      {isLoggedIn ? <button>Logout</button> : <button>Login</button>}
     </div>
   );
 };

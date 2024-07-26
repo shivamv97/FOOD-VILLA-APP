@@ -18,11 +18,17 @@
 }
 
 .card {
-  width: 255px;
+  width: 240px;
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
-  overflow-wrap: break-word;
+  /* overflow-wrap: break-word; */
+  container-type: inline-size;
+  aspect-ratio: 1/1;
+}
+
+.card > h3 {
+  font-size: clamp(0.5rem, 15cqi, 20px); /* container-query-inline */
 }
 
 .card > img {

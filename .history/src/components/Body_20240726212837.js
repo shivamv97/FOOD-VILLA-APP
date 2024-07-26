@@ -5,7 +5,7 @@ import Shimmer from "./shimmer";
 
 function filterdata(searchText, restaurants) {
   return restaurants.filter((restaurant) =>
-    restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
+    restaurant.info.name.includes(searchText)
   );
 }
 
@@ -71,14 +71,11 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-list">
-        {
-          FilteredRestaurants.map((restaurant) => {
-            return (
-              <RestrauntCard key={restaurant.info.id} {...restaurant.info} />
-            );
-          })
-          //H.W. => 1.PROPER PLACE FOR NO RESTAURANTS FOUND   2.SEARCH WENT OFF WHEN IT IS SHOWING NO RESTAURANTS FOUND..........
-        }
+        {FilteredRestaurants.map((restaurant) => {
+          return (
+            <RestrauntCard key={restaurant.info.id} {...restaurant.info} />
+          );
+        })}
       </div>
     </>
   );
