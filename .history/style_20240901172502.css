@@ -1,0 +1,70 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  border: 1px solid black;
+}
+.nav-items > ul {
+  list-style-type: none;
+  display: flex;
+  gap: 15px;
+  font-family: "Baloo Bhai 2", cursive;
+}
+
+.nav-items > ul > li {
+  padding: 12px;
+  font-size: 1rem;
+  margin: 10px;
+  cursor: pointer;
+  border: solid 1px black;
+  border-radius: 20px;
+  border-style: none;
+}
+.nav-items > ul > li > a {
+  text-decoration: none;
+  display: block;
+}
+
+.nav-items > ul > li > a:hover {
+  color: white;
+  background-color: black;
+  border: solid 1px black;
+  border-radius: 50%;
+}
+
+.header > button {
+  cursor: pointer;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.card {
+  width: 255px;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  overflow-wrap: break-word;
+}
+
+.card > img {
+  width: 100%;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  width: 255px;
+  height: 200px;
+  background: lightgrey;
+  margin: 10px;
+  padding: 10px;
+}
+
+.menu-card {
+  display: flex;
+}

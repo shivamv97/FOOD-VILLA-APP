@@ -1,0 +1,55 @@
+import AppLayout from "./App";
+import Body from "./components/Body";
+import About from "./components/About";
+import Contact from "./components/ContactUs";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
+
+export const LINK_PATH_ROOT = "/";
+export const LINK_PATH_ABOUT_US = "/about-us";
+export const LINK_PATH_CONTACT_US = "/contact-us";
+export const LINK_PATH_PROFILE = "/profile";
+export const LINK_PATH_CART = "/cart";
+console.log(AppLayout);
+export const appRoutes = [
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      //Nested Routing
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/shivam",
+        element: <span>Shivam</span>,
+        children: [
+          {
+            path: "/shivam/divy",
+            element: <div>Divyanshu</div>,
+          },
+        ],
+      },
+      {
+        path: "/about", //parentPath/{path} => localhost:1234/about/profile
+        element: <About />,
+        children: [
+          {
+            path: "profile", //parentPath/{path} => localhost:1234/about/profile
+            element: <Profile />,
+          },
+        ],
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurant/:restaurantId", //Dynamic Routing
+        element: <RestaurantMenu />,
+      },
+    ],
+  },
+];
